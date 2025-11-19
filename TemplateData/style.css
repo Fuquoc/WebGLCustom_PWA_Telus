@@ -7,8 +7,6 @@ body { padding: 0; margin: 0 }
 	placeholder in its own block avoids parser issues in some build tools. */
 #unity-canvas { position: relative; z-index: 0 }
 
-#unity-loading-bar { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: none; z-index: 30 }
-#unity-logo { width: 154px; height: 130px; background: url('bdm3d_logo.png') no-repeat center; background-size: contain;}
 #unity-progress-bar-empty { margin-left: auto; margin-right: auto; width: 141px; height: 18px; margin-top: 10px; background: url('progress-bar-empty-{{{ SPLASH_SCREEN_STYLE.toLowerCase() }}}.png') no-repeat center }
 #unity-progress-bar-full { width: 0%; height: 18px; margin-top: 10px; background: url('progress-bar-full-{{{ SPLASH_SCREEN_STYLE.toLowerCase() }}}.png') no-repeat center }
 #unity-warning { position: absolute; left: 50%; top: 5%; transform: translate(-50%); background: white; padding: 10px; display: none }
@@ -49,14 +47,51 @@ body { padding: 0; margin: 0 }
       pointer-events: none; /* chặn click chuột */
     }
 
+#unity-loading-bar {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    z-index: 30;
+    pointer-events: none; /* không ảnh hưởng tới webgl input */
+}
+
+#unity-logo { 
+  width: 209px; 
+  height: 184px; 
+  background: url('bdm3d_logo.png') no-repeat center; 
+  background-size: contain;
+}
+
+@font-face {
+    font-family: 'NexaBold';
+    src: url('Font/Nexa-Trial-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+#customLoading {
+    font-family: 'NexaBold', sans-serif;
+    font-size: 20px;
+    color: white;
+    text-align: center;
+}
+
 #unity-progress-bar-empty-remake {
   width: 300px;
-  height: 20px;
-  background: rgba(255, 255, 255, 0.35);
-  border-radius: 12px;
+  height: 24px;
+  background: white;
   overflow: hidden;
-  backdrop-filter: blur(4px);
-  box-shadow: 0 0 10px rgba(0,0,0,0.16);
+  padding: 3px;
+  /* backdrop-filter: blur(4px);
+  box-shadow: 0 0 10px rgba(0,0,0,0.16); */
 }
 
 #unity-progress-bar-full-remake {
@@ -70,4 +105,22 @@ body { padding: 0; margin: 0 }
 @keyframes loadingGradient {
   0% { background-position: 0% 50%; }
   100% { background-position: 100% 50%; }
+}
+
+.map-overlay {
+  position: fixed;        /* phủ toàn màn hình */
+  inset: 0;               /* top:0; right:0; bottom:0; left:0; */
+  display: flex;
+  align-items: center;    /* canh giữa theo chiều dọc */
+  justify-content: center;/* canh giữa theo chiều ngang */
+  background: transparent;/* nếu muốn che mờ nền, đổi thành rgba(0,0,0,0.5) */
+  z-index: 5;
+}
+
+/* nếu muốn cho iframe thực sự full-screen */
+.map-iframe {
+  width: 100vw;   /* toàn chiều ngang viewport */
+  height: 100vh;  /* toàn chiều cao viewport */
+  border: 0;
+  display: block;
 }
