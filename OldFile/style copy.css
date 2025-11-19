@@ -1,0 +1,64 @@
+body { padding: 0; margin: 0 }
+#unity-container { position: fixed; width: 100%; height: 100%; }
+#unity-canvas { width: 100%; height: 100%; background: {{{ BACKGROUND_COLOR }}} }
+
+/* Explicitly position the canvas at a lower stacking level so the overlay
+	can sit on top of it but beneath the loading bar. Keeping the background
+	placeholder in its own block avoids parser issues in some build tools. */
+#unity-canvas { position: relative; z-index: 0 }
+
+#unity-loading-bar { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: none; z-index: 30 }
+#unity-logo { width: 154px; height: 130px; background: url('bdm3d_logo.png') no-repeat center; background-size: contain;}
+#unity-progress-bar-empty { margin-left: auto; margin-right: auto; width: 141px; height: 18px; margin-top: 10px; background: url('progress-bar-empty-{{{ SPLASH_SCREEN_STYLE.toLowerCase() }}}.png') no-repeat center }
+#unity-progress-bar-full { width: 0%; height: 18px; margin-top: 10px; background: url('progress-bar-full-{{{ SPLASH_SCREEN_STYLE.toLowerCase() }}}.png') no-repeat center }
+#unity-warning { position: absolute; left: 50%; top: 5%; transform: translate(-50%); background: white; padding: 10px; display: none }
+
+/* Overlay used to appear on top of the canvas (full-screen). */
+#overlay {
+	position: absolute; /* must be positioned for z-index to take effect */
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	/* background-color: black; */
+	z-index: 10; /* sits above the canvas */
+	pointer-events: auto; /* set to 'none' if you want clicks to pass through to canvas */
+}
+
+    .video-wrapper {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 100vw;
+      height: 100vh;
+      transform: translate(-50%, -50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: black;
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* hoặc contain nếu muốn giữ tỉ lệ */
+      background-color: black;
+      pointer-events: none; /* chặn click chuột */
+    }
+
+#unity-progress-bar-full-remake {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #8BC53F, #2A953D);
+  background-size: 200% 200%;
+  animation: loadingGradient 2s linear infinite;
+  transition: width 0.1s ease-out;
+}
+
+@keyframes loadingGradient {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
