@@ -15,6 +15,7 @@
   </head>
   <body>
     <div id="unity-container">
+      <!-- <button onclick="showMap()"></button> -->
       <div id="overlay">
         <div class="video-wrapper">
           <video
@@ -27,7 +28,72 @@
           </video>
         </div>
       </div>
-      <div class="map-overlay" id="mapOverlay"></div>
+      <div class="map-overlay" id="mapOverlay">
+        <div class="side-info-panel">
+        <div class="side-info-bg"></div>
+        <div class="left-legend" id="siteLocationLegend" role="region" aria-label="Site location legend">
+          <div class="legend-header">
+            <h1 class="legend-title">Site Location</h1>
+            <div class="title-underline"></div>
+            <div class="legend-address">767 Douglas Street, Victoria, British Columbia, Canada</div>
+          </div>
+
+          <ul class="legend-list">
+            <li class="legend-item">
+              <button type="button" class="legend-toggle" data-layer="lodging" aria-pressed="false" onclick="setLayerVisibility('poi-label-lodging')">
+                <span class="legend-icon icon-pink" style="--img: url('SiteIcon/Lodging.png')" aria-hidden="true"></span>
+                <span class="legend-text">Lodging</span>
+              </button>
+            </li>
+            <li class="legend-item">
+              <button type="button" class="legend-toggle" data-layer="recreation" aria-pressed="false" onclick="setLayerVisibility('poi-label-Recreation')">
+                <span class="legend-icon icon-green" style="--img: url('SiteIcon/Recreation.png')" aria-hidden="true"></span>
+                <span class="legend-text">Recreation</span>
+              </button>
+            </li>
+            <li class="legend-item">
+              <button type="button" class="legend-toggle" data-layer="transit" aria-pressed="false" onclick="setLayerVisibility('poi-label-Transit')">
+                <span class="legend-icon icon-teal" style="--img: url('SiteIcon/Transit.png')" aria-hidden="true"></span>
+                <span class="legend-text">Transit</span>
+              </button>
+            </li>
+            <li class="legend-item">
+              <button type="button" class="legend-toggle" data-layer="education" aria-pressed="false" onclick="setLayerVisibility('poi-label-Education')">
+                <span class="legend-icon icon-purple" style="--img: url('SiteIcon/Education.png')" aria-hidden="true"></span>
+                <span class="legend-text">Education</span>
+              </button>
+            </li>
+            <li class="legend-item">
+              <button type="button" class="legend-toggle" data-layer="shopping" aria-pressed="false" onclick="setLayerVisibility('poi-label-ShoppingFnB')">
+                <span class="legend-icon icon-orange" style="--img: url('SiteIcon/Shopping.png')" aria-hidden="true"></span>
+                <span class="legend-text">Shopping / F&B</span>
+              </button>
+            </li>
+            <li class="legend-item">
+              <button type="button" class="legend-toggle" data-layer="health" aria-pressed="false" onclick="setLayerVisibility('poi-label-HealthMedical')">
+                <span class="legend-icon icon-blue" style="--img: url('SiteIcon/Health.png')" aria-hidden="true"></span>
+                <span class="legend-text">Health &amp; Medical</span>
+              </button>
+            </li>
+            <li class="legend-item">
+              <button type="button" class="legend-toggle" data-layer="major_employers" aria-pressed="false" onclick="setLayerVisibility('poi-label-Major Employers')">
+                <span class="legend-icon icon-darkteal" style="--img: url('SiteIcon/MajorEmployers.png')" aria-hidden="true"></span>
+                <span class="legend-text">Major Employers</span>
+              </button>
+            </li>
+            <li class="legend-item">
+              <button type="button" class="legend-toggle" data-layer="major_arterials" aria-pressed="false" onclick="setLayerVisibility('poi-label-Major Arterials')">
+                <span class="legend-icon icon-yelloworange" style="--img: url('SiteIcon/MajorArterials.png')" aria-hidden="true"></span>
+                <span class="legend-text">Major Arterials</span>
+              </button>
+            </li>
+          </ul>
+
+          <div class="legend-separator"></div>
+        </div>
+
+        </div>
+      </div>
       <canvas id="unity-canvas" width={{{ WIDTH }}} height={{{ HEIGHT }}} tabindex="-1"></canvas>
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
