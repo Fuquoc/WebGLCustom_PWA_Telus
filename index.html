@@ -7,6 +7,11 @@
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
     <link rel="manifest" href="manifest.webmanifest">
+
+    <!-- Mapbox CSS -->
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css" rel="stylesheet" />
+    <!-- Mapbox JS -->
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js"></script>
   </head>
   <body>
     <div id="unity-container">
@@ -18,19 +23,11 @@
             loop
             playsinline
             preload="auto"
-            src="https://dl.dropboxusercontent.com/scl/fi/ozgh5k1sgpww4vl7m7llm/telus_splash_fadetransition_3.mp4?rlkey=2yag4gh5bctyw0r2qbf38mm03&st=er37j7e1">
+            src="https://dl.dropboxusercontent.com/scl/fi/ceukey6z7ddwll1nzzswl/telus_splash_fadetransition_4.mp4.mp4?rlkey=draehesvez97iqo0xnnu3ahgf&st=uo7mqul8">
           </video>
         </div>
       </div>
-      <div class="map-overlay" id="mapOverlay">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1355.8197614742453!2d108.22497449594107!3d16.02197823995707!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x314219f77b8a2b51%3A0x214c2833fe05f868!2zNDgtNTAgTmd1eeG7hW4gUGjGsOG7m2MgTGFuLCBIb8OgIFh1w6JuLCBD4bqpbSBM4buHLCDEkMOgIE7hurVuZywgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1763540489874!5m2!1svi!2s"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          class="map-iframe"
-        ></iframe>
-      </div>
+      <div class="map-overlay" id="mapOverlay"></div>
       <canvas id="unity-canvas" width={{{ WIDTH }}} height={{{ HEIGHT }}} tabindex="-1"></canvas>
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
@@ -41,6 +38,8 @@
       </div>
       <div id="unity-warning"> </div>
     </div>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js"></script>
+    <script src="Mapbox/mapboxOverlay.js"></script>
     <script>
       window.addEventListener("load", function () {
         if ("serviceWorker" in navigator) {
