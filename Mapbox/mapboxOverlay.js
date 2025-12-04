@@ -86,14 +86,14 @@ function zoomTo(map, zoomLevel) {
 }
 
 //#region Remove/Show
-function fadeOutAndRemove(mapDiv) {
+function fadeOutAndRemove() {
+    mapDiv = document.getElementById('mapOverlay');
     if (!mapDiv) return;
 
     // 1. Ẩn dần UI
     mapDiv.style.transition = 'opacity 1s';
     mapDiv.style.opacity = 0;
     mapDiv.classList.remove('mapboxgl-map');
-    mapDiv.style.zIndex = -1;
 
     setTimeout(() => {
         // // 2. Xóa Mapbox map object
@@ -107,8 +107,11 @@ function fadeOutAndRemove(mapDiv) {
         //     window.map = null; // release reference
         // }
 
+        mapDiv.style.zIndex = -1;
+
+
         if (mapDiv) {
-            mapDiv.display = 'none';
+            mapDiv.style.display = 'none';
         }
 
         console.log('Map hidden and resources cleared.');
@@ -123,37 +126,9 @@ function showMap() {
     }
 
     mapDiv.classList.add('mapboxgl-map');
-    mapDiv.display = 'show';
+    mapDiv.style.display = 'block';
     mapDiv.style.opacity = 1;
     mapDiv.style.zIndex = 5;
-
-    // // Nếu map cũ vẫn tồn tại, xóa trước
-    // if (map) {
-    //     try {
-    //         map.remove();
-    //     } catch (e) {
-    //         console.warn("Error removing old map:", e);
-    //     }
-    //     map = null;
-    // }
-
-    // // Tạo map mới
-    // map = initMap(mapDiv);
-
-    // // Thêm marker
-    // const markerEl = createMarkerElement();
-    // const marker = addMarker(map, markerEl);
-
-    // // Thêm zoom control
-    // addZoomControl(map, markerEl);
-
-    // // Logic click marker
-    // addMarkerClickLogic(map, markerEl, mapDiv);
-
-    // // Zoom tự động khi load
-    // autoZoomOnLoad(map);
-
-    // console.log("Map shown.");
 }
 //#endregion
 

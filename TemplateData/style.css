@@ -117,6 +117,54 @@ body { padding: 0; margin: 0 }
   pointer-events: auto;
 }
 
+.map-close-btn {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1001;
+  transition: all 0.3s ease;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.map-close-btn:hover {
+  background: rgba(0, 0, 0, 0.85);
+  transform: translateX(-50%) scale(1.1);
+}
+
+.map-close-btn:active {
+  transform: translateX(-50%) scale(0.95);
+}
+
+/* X icon using ::before and ::after */
+.map-close-btn::before,
+.map-close-btn::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 2px;
+  background: #ffffff;
+}
+
+.map-close-btn::before {
+  transform: rotate(45deg);
+}
+
+.map-close-btn::after {
+  transform: rotate(-45deg);
+}
+
 /* ------------------------------------------------ */
   .side-info-panel {
     position: absolute;

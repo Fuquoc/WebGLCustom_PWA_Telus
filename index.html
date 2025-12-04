@@ -15,7 +15,6 @@
   </head>
   <body>
     <div id="unity-container">
-      <!-- <button onclick="showMap()"></button> -->
       <div id="overlay">
         <div class="video-wrapper">
           <video
@@ -29,6 +28,7 @@
         </div>
       </div>
       <div class="map-overlay" id="mapOverlay">
+        <button class="map-close-btn" onclick="fadeOutAndRemove()" aria-label="Close map"></button>
         <div class="side-info-panel">
         <div class="side-info-bg"></div>
         <div class="left-legend" id="siteLocationLegend" role="region" aria-label="Site location legend">
